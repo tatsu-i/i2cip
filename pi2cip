@@ -1,0 +1,29 @@
+#!/usr/bin/env python
+# vim: fileencoding=utf-8
+import socket
+import fcntl
+import sys
+import re
+import os
+
+def ifconfig(ifname):
+	s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+	try:
+		result = fcntl.ioctl(s.fileno(), 0x8915 ,(ifname+'\0'*32)[:32])
+	except IOError:
+		return None
+	return socket.inet_ntoa(result[20:24])
+
+def main():
+	ipaddr = ifconfig('eth0')
+	os.system('printi2c "        " "        "')
+	if ipaddr is None:
+		ipaddr = ifconfig('wlan0')
+	if ipaddr is None:
+		return 0
+	m = re.match('(.*\..*)(\..*\..*)',ipaddr)
+	cmd = 'printi2c ">'+m.group(1)+'" "'+m.group(2)+'"'
+	os.system(cmd)
+
+if __name__ == '__main__':
+	main()
