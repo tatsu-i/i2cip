@@ -35,7 +35,7 @@ $ sudo modprobe i2c-bcm2708
 Install library
 
 ````bash
-$	./install-wiringPi
+$ ./install-wiringPi
 ````
 
 Build and copy
