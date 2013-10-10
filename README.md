@@ -4,37 +4,37 @@
 
 ## セットアップ
 
-Edit module file
+modulesファイルをviで開く
 ````bash
 $ sudo vi /etc/modules
 ````
 
-Add these two lines
+次の二行を追加して上書き保存する
 ````bash
 i2c-bcm2708 
 i2c-dev
 ````
-
+raspi-blacklist.confを開く
 ````bash
 $ sudo vi /etc/modprobe.d/raspi-blacklist.conf
 ````
 
-Comment out blacklist i2c-bcm2708
+blacklist i2c-bcm2708の行をコメントアウトする
 ````
 #blacklist i2c-bcm2708
 ````
 
-Load kernel module
+カーネルモジュールをロードする
 ````bash
 $ sudo modprobe i2c-bcm2708
 ````
 
-Install library
+ライブラリのインストール
 ````bash
 $ ./install-wiringPi
 ````
 
-Build and copy
+ビルドとコピー
 ````bash
 $ cd i2cip
 $ make
