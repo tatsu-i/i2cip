@@ -4,6 +4,7 @@
 
 ## セットアップ
 
+Edit module file
 ````bash
 $ sudo vi /etc/modules
 ````
