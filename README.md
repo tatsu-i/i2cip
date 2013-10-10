@@ -32,6 +32,14 @@ Load kernel module
 $ sudo modprobe i2c-bcm2708
 ````
 
+Install library
+
+````bash
+$	./install-wiringPi
+````
+
+Build and copy
+
 ````bash
 $ cd i2cip
 $ make
